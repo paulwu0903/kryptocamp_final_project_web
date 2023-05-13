@@ -29,7 +29,7 @@ import {
   useOwnedNFTs,
 } from '@thirdweb-dev/react';
 import { useState, useEffect } from 'react';
-import * as TREND_ADDRESS from '@/const/contractAddress';
+import * as TREND_ADDRESS from '@/const/contractAddress.js';
 // import * as TREND_PRICE from '@/const/price';
 // import { ethers } from 'ethers';
 // import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from 'react-icons/io5';
@@ -230,20 +230,6 @@ export default function MintNftPage() {
       setInputValue(newValue);
     }
     setMintAmount(Number(inputValue));
-  };
-
-  // handle stake amount
-  const handleStakeDecrement = () => {
-    if (stakeAmount <= 1) return;
-
-    setStakeAmount(stakeAmount - 1);
-    setTotalStakePrice(ethers.utils.parseEther((stakeAmount - 1).toString()));
-  };
-
-  const handleStakeIncrement = () => {
-    // if (mintAmount >= 3) return;
-    setStakeAmount(stakeAmount + 1);
-    setTotalStakePrice(ethers.utils.parseEther((stakeAmount + 1).toString()));
   };
 
   // @ts-ignore
