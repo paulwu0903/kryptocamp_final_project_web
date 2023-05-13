@@ -81,3 +81,19 @@ export const transactionTypePrintForMaster= [
     "投資",
     "賣出"
 ]
+
+export const tabs = [
+    { id: "tab1",label: "競選活動",  value: 0 },
+    { id: "tab2",label: "罷免活動", value: 1 }
+]
+export const campaignPhasePrint = [
+    "CLOSED",
+    "CANDIDATE_ATTENDING",
+    "VOTING",
+    "CONFIRMING"
+]
+export const recallPhasePrint = [
+    "CLOSED",
+    "VOTING",
+    "CONFIRMING"
+]

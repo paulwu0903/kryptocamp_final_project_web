@@ -263,7 +263,13 @@ const NAV_ITEMS: Array<NavItem> = [
         label: 'Council',
         subLabel: 'On-Chain Governance',
         href: 'council',
-      },
+      }
+      
+    ],
+  },
+  {
+    label: 'Treasury',
+    children: [
       {
         label: 'Treasury',
         subLabel: 'For Trend Token Holders',
@@ -274,7 +280,7 @@ const NAV_ITEMS: Array<NavItem> = [
         subLabel: 'For Trend Master NFT Holders',
         href: 'master_treasury',
       }
-    ],
+    ]
   },
   {
     label: 'Investing Dashboard',

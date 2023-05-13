@@ -6,10 +6,10 @@ import theme from '../theme/theme.ts';
 import App from './App.tsx';
 import { Sepolia } from "@thirdweb-dev/chains";
 
-const activeChain = 'goerli';
+//const activeChain = 'goerli';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThirdwebProvider activeChain={ activeChain }>
+    <ThirdwebProvider activeChain={ Sepolia }>
       <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>

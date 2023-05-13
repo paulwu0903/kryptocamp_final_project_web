@@ -277,7 +277,7 @@ export default function TreasuryPage() {
                     (
                       <Box>
 
-                        {transactions && transactions?.map((tx, index) => {
+                        {transactions && transactions?.filter(tx => !tx[5]).map((tx, index) => {
                           if (tx[0] == 0){
                             return (
                               <Card key={index} my={'10px'}>
