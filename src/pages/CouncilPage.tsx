@@ -1,23 +1,27 @@
 import { Skeleton, Card, CardBody, Stack, Container, Box, Flex, Text, Heading, SimpleGrid, Tabs, TabList, TabPanels, Tab, TabPanel, Center,Drawer,
-  FormLabel,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Textarea,
   Button,
-  Select,
   Input,
   Tooltip,
   useDisclosure,
-  Divider
+  Divider,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
   } from '@chakra-ui/react';
 import {tabs, recallPhasePrint, campaignPhasePrint} from '../data/data'
 import {COUNCIL_ADDRESS} from '../const/contractAddress'
-import { ReactNode, useContext, useState, useEffect  } from 'react';
-import { ConnectWallet, useContract, useContractRead, Web3Button, useContractWrite } from "@thirdweb-dev/react";
+import {useState } from 'react';
+import {  useContract, useContractRead, Web3Button } from "@thirdweb-dev/react";
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 
 export default function CouncilPage() {
@@ -26,38 +30,12 @@ export default function CouncilPage() {
     data: currentActivity,
     isLoading: loadingCurrentActivity
   } = useContractRead(contract, 'getCurrentActiviry');
-  const {
-    data: campaignStarttime,
-    isLoading: loadingCampaignStarttime
-  } = useContractRead(contract, 'getCampaignStartTime');
+  
   const {
     data: candidates,
     isLoading: loadingCandidates
   } = useContractRead(contract, 'getCandidate');
-  const {
-    data: candidatenNum,
-    isLoading: loadingCandidatenNum
-  } = useContractRead(contract, 'getCandidateNum');
-  const {
-    data: level1,
-    isLoading: loadingLevel1
-  } = useContractRead(contract, 'getLevelOfVotePower', [0]);
-  const {
-    data: level2,
-    isLoading: loadingLevel2
-  } = useContractRead(contract, 'getLevelOfVotePower', [1]);
-  const {
-    data: level3,
-    isLoading: loadingLevel3
-  } = useContractRead(contract, 'getLevelOfVotePower', [2]);
-  const {
-    data: level4,
-    isLoading: loadingLevel4
-  } = useContractRead(contract, 'getLevelOfVotePower', [3]);
-  const {
-    data: level5,
-    isLoading: loadingLevel5
-  } = useContractRead(contract, 'getLevelOfVotePower', [4]);
+
   const {
     data: campaign,
     isLoading: loadingCampaign
@@ -99,12 +77,13 @@ export default function CouncilPage() {
   const [recallVotePower, setRecallVotePower] = useState(0)
 
   return (
-    <Box bg='#FEFEFE' w={'100%'} h={'100%'}>
+    <Box bg='#FEFEFE' w={'100%'} h={'100%'} mb = '10px'>
       <Container maxW={'1200px'} w={'100%'}>
       <Center>
         <Heading>Council</Heading>
       </Center>
-      <Card maxH={'80vh'} overflow={'scroll'}>
+            <Box>
+            <Card maxH={'40vh'} overflow={'scroll'} mb = '10px'>
         <CardBody>
           <Center>
             <Text mr = '10px'>成員: </Text>
@@ -134,13 +113,14 @@ export default function CouncilPage() {
           </Center>
         </CardBody>
       </Card>
+      <VotePowerTable/>
+      </Box> 
       <Tabs>
         <TabList>
           {tabs?.map(tab=>{
             return (<Tab>{tab.label}</Tab>)
           })}
         </TabList>
-
   <TabPanels>
     {/* 競選理事會 */}
     <TabPanel>
@@ -537,6 +517,98 @@ function Participate() {
             參選
             </Web3Button>
             </Center>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
+}
+
+function VotePowerTable(){
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {contract} = useContract(COUNCIL_ADDRESS);
+  const {
+    data: level1,
+    isLoading: loadingLevel1
+  } = useContractRead(contract, 'getLevelOfVotePower', [0]);
+  const {
+    data: level2,
+    isLoading: loadingLevel2
+  } = useContractRead(contract, 'getLevelOfVotePower', [1]);
+  const {
+    data: level3,
+    isLoading: loadingLevel3
+  } = useContractRead(contract, 'getLevelOfVotePower', [2]);
+  const {
+    data: level4,
+    isLoading: loadingLevel4
+  } = useContractRead(contract, 'getLevelOfVotePower', [3]);
+  const {
+    data: level5,
+    isLoading: loadingLevel5
+  } = useContractRead(contract, 'getLevelOfVotePower', [4]);
+
+  return (
+    <>
+      
+      <Button colorScheme='blue' onClick={onOpen}>
+        查詢Vote Powers
+      </Button>
+      <Drawer  onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth='1px'>Vote Powers</DrawerHeader>
+          <DrawerBody>
+          <Center>
+          {!loadingLevel1 && !loadingLevel2 && !loadingLevel3 && !loadingLevel4 && !loadingLevel5? (
+            <TableContainer>
+            <Table variant='simple'>
+              <TableCaption>Vote Power Table</TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>質押幣量</Th>
+                  <Th><Text fontSize='8px' mr='10px'>票數</Text></Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {"<"} {Math.round(level1/1e18)}</Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>0</Text></Td>
+                </Tr>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {Math.round(level1/1e18)} ~ {Math.round(level2/1e18)} </Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>1</Text></Td>
+                </Tr>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {Math.round(level2/1e18)} ~ {Math.round(level3/1e18)} </Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>4</Text></Td>
+                </Tr>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {Math.round(level3/1e18)} ~ {Math.round(level4/1e18)} </Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>9</Text></Td>
+                </Tr>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {Math.round(level4/1e18)} ~ {Math.round(level5/1e18)} </Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>16</Text></Td>
+                </Tr>
+                <Tr>
+                  <Td><Text fontSize='8px' mr='10px'> {">"} {level5/1e18} </Text></Td>
+                  <Td><Text fontSize='8px' mr='10px'>25</Text></Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
+          ):(
+            <Stack>
+                        <Skeleton height={'100px'} isLoaded = {!loadingLevel1} />
+                        <Skeleton height={'100px'} isLoaded = {!loadingLevel3}/>
+                        <Skeleton height={'100px'} isLoaded = {!loadingLevel5} />
+            </Stack>
+          )}
+          
+            
+          </Center>
+
           </DrawerBody>
         </DrawerContent>
       </Drawer>

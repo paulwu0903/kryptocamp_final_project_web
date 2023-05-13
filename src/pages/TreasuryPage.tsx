@@ -1,10 +1,7 @@
-import { ReactNode } from 'react';
 import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid, CardBody, Card, Select, Input, Center, Skeleton } from '@chakra-ui/react';
-
-import { InfoOutlineIcon } from '@chakra-ui/icons'
-import { ConnectWallet, useContract, useContractRead, Web3Button } from "@thirdweb-dev/react";
+import {  useContract, useContractRead, Web3Button } from "@thirdweb-dev/react";
 import {TOKEN_TREASURY_ADDRESS} from '../const/contractAddress'
-import {useEffect, useState} from 'react'
+import { useState} from 'react'
 import {ethers} from 'ethers'
 import {transactionTypeOptions, transactionTypePrint} from '../data/data'
 

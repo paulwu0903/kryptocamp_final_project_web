@@ -201,57 +201,7 @@ export default function GridListWithCTA() {
             <chakra.h2 fontSize='3xl' fontWeight='700'>
               Mint Token
             </chakra.h2>
-            {/* test area */}
-            {/*<Button colorScheme='green' size='md'>*/}
-            {/*  Call To Action*/}
-            {/*</Button>*/}
-            {/*<Box>*/}
-            {/*  <Box*/}
-            {/*    borderRadius='12px'*/}
-            {/*    borderColor={useColorModeValue('green.600', 'green.300')}*/}
-            {/*    borderWidth='4px'*/}
-            {/*    borderStyle='solid'*/}
-            {/*  >*/}
-            {/*    <Web3Button*/}
-            {/*      contractAddress={TREND_ADDRESS.BUYACOFFEE_ADDRESS}*/}
-            {/*      action={async () => {*/}
-            {/*        await BUYACOFFEE_CONTRACT!.call('buyCoffee', ['', ''], {*/}
-            {/*          // here use string*/}
-            {/*          value: ethers.utils.parseEther(TREND_PRICE.COFFEE_PRICE),*/}
-            {/*        });*/}
-            {/*      }}*/}
-            {/*      onSuccess={() => {*/}
-            {/*        toast({*/}
-            {/*          title: '謝謝惠顧',*/}
-            {/*          status: 'success',*/}
-            {/*          position: 'top',*/}
-            {/*          duration: 2000,*/}
-            {/*          isClosable: true,*/}
-            {/*        });*/}
-            {/*      }}*/}
-            {/*      onError={(error) => {*/}
-            {/*        toast({*/}
-            {/*          title: error.message,*/}
-            {/*          status: 'error',*/}
-            {/*          position: 'top',*/}
-            {/*          duration: 2000,*/}
-            {/*          isClosable: true,*/}
-            {/*        });*/}
-            {/*      }}*/}
-            {/*    >*/}
-            {/*      買一杯咖啡*/}
-            {/*    </Web3Button>*/}
-            {/*  </Box>*/}
-
-            {/*  <Flex>*/}
-            {/*    <Text>Total Coffee：</Text>*/}
-            {/*    <Skeleton w={'20px'} isLoaded={!loadingTotalCoffee}>*/}
-            {/*      {totalCoffee?.toString()}*/}
-            {/*    </Skeleton>*/}
-            {/*  </Flex>*/}
-            {/*</Box>*/}
-
-            {/*  mint area */}
+            
             {address ? (
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 {/* button increase, decrease */}
