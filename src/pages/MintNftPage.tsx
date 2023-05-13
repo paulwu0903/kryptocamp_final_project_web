@@ -29,7 +29,7 @@ import {
   useOwnedNFTs,
 } from '@thirdweb-dev/react';
 import { useState, useEffect } from 'react';
-import * as TREND_ADDRESS from '@/const/contractAddress.js';
+import * as TREND_ADDRESS from '../const/contractAddress.js';
 // import * as TREND_PRICE from '@/const/price';
 // import { ethers } from 'ethers';
 // import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from 'react-icons/io5';
@@ -67,8 +67,6 @@ export default function MintNftPage() {
   const [auctionPrice] = useState(0.01);
   const [_tokenIdArr, setTokenIdArr] = useState([]);
   const [images, setImages] = useState([{ id: 0, imgUrl: '' }]);
-
-  const [totalStakePrice, setTotalStakePrice] = useState(ethers.utils.parseEther('1'));
 
   // display
   const [_totalNftSupplyDisplay, setTotalNftSupplyDisplay] = useState('0');
