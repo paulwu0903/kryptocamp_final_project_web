@@ -588,7 +588,7 @@ export default function MasterTreasuryPage() {
                       {!loadingOwners? (
                         <Box>
                           {owners && owners?.map((own, index)=>{
-                            return (<Text>{index+1}. {own}</Text>)
+                            return (<Text key={index}>{index+1}. {own}</Text>)
                           })}
                         </Box>
                       ):(

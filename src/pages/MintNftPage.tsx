@@ -154,7 +154,7 @@ export default function MintNftPage() {
     ownedNFTs && console.log('ownedNFTS', ownedNFTs, 'loadingOwnedNFTs', loadingOwnedNFTs);
     const NFTimages: { id: number; imgUrl: string }[] | undefined =
       ownedNFTs &&
-      ownedNFTs!.map((item) => {
+      ownedNFTs!.map((item:any) => {
         // @ts-ignore
         const image: image = { id: item.metadata.id, imgUrl: item.metadata.image };
         return image;
@@ -331,7 +331,7 @@ export default function MintNftPage() {
                             isClosable: true,
                           });
                         }}
-                        onError={(error) => {
+                        onError={(error:any) => {
                           console.log(error);
                           toast({
                             title: 'Oops!',
@@ -416,7 +416,7 @@ export default function MintNftPage() {
                     ml={'5px'}
                     mb={'5px'}
                   >
-                    <Text>{item.id}</Text>
+                    <Text key={index}>{item.id}</Text>
                     <Flex
                       w='fit-content'
                       borderRadius='12px'
@@ -453,7 +453,7 @@ export default function MintNftPage() {
                             isClosable: true,
                           });
                         }}
-                        onError={(error) => {
+                        onError={(error:any) => {
                           setStakeAmount(1);
                           // setTotalPrice(ethers.utils.parseEther('1'));
                           toast({

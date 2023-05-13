@@ -118,7 +118,7 @@ export default function CouncilPage() {
       <Tabs>
         <TabList>
           {tabs?.map(tab=>{
-            return (<Tab>{tab.label}</Tab>)
+            return (<Tab key={tab.id}>{tab.label}</Tab>)
           })}
         </TabList>
   <TabPanels>
