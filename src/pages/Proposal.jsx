@@ -495,7 +495,6 @@ export default function ProposalPage() {
                         </Text>
                         <Input
                           bg={'gray.100'}
-                          value={votePowerThreshold}
                           onChange= {(e)=> {
                             setVotePowerThreshold(e.target.value);
                           }

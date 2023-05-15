@@ -29,7 +29,7 @@ import {
   useOwnedNFTs,
 } from '@thirdweb-dev/react';
 import { useState, useEffect } from 'react';
-import {TREND_ADDRESS} from '../const/contractAddress';
+import * as TREND_ADDRESS from '../const/contractAddress';
 // import * as TREND_PRICE from '@/const/price';
 // import { ethers } from 'ethers';
 // import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from 'react-icons/io5';
