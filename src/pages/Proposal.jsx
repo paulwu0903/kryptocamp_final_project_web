@@ -773,7 +773,6 @@ export default function ProposalPage() {
                                     <Input
                                       bg={'gray.100'}
                                       maxLength= {4}
-                                      value={votePower}
                                       width = '20%'
                                       onChange= {(e)=> setVotePower(e.target.value)}
                                     />
