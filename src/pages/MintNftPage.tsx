@@ -428,6 +428,7 @@ export default function MintNftPage() {
                         }}
                         onSuccess={() => {
                           setStakeAmount(1);
+                          console.log(stakeAmount)
                           // setTotalPrice(ethers.utils.parseEther('1'));
                           toast({
                             title: 'Stake 成功',
@@ -439,6 +440,7 @@ export default function MintNftPage() {
                         }}
                         onError={(error:any) => {
                           setStakeAmount(1);
+                          console.log(stakeAmount)
                           // setTotalPrice(ethers.utils.parseEther('1'));
                           toast({
                             title: error.message,
