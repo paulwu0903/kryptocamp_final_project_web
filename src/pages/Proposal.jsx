@@ -770,12 +770,6 @@ export default function ProposalPage() {
                                   {prop[1] == 1 ? (
                                     <>
                                     <Text></Text>
-                                    <Input
-                                      bg={'gray.100'}
-                                      maxLength= {4}
-                                      width = '20%'
-                                      onChange= {(e)=> setVotePower(e.target.value)}
-                                    />
                                     <Web3Button
                                       contractAddress={PROPOSAL_ADDRESS}
                                       action={async()=>{
